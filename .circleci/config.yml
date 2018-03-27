@@ -12,8 +12,9 @@ jobs:
           name: Build webosose
           command: |
             sudo sh -c 'echo ko_KR.UTF-8 UTF-8 >> /etc/locale.gen'
+            sudo sh -c 'echo en_US.UTF-8 UTF-8 >> /etc/locale.gen'
             sudo locale-gen
-            export LANG=ko_KR.UTF-8
+            export LANG=en_US.UTF-8
             export LC_ALL=${LANG}
             sudo scripts/prerequisites.sh
             ./mcf -p 0 -b 0 raspberrypi3
