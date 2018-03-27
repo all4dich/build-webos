@@ -17,7 +17,7 @@ jobs:
             export LC_ALL=${LANG}
             sudo scripts/prerequisites.sh
             ./mcf -p 0 -b 0 raspberrypi3
-            make webos-image
+            LANG=ko_KR.UTF-8 bitbake webos-image
       - store_artifacts:
           path: ~/project/BUILD/deploy/images
           destination: Firmware
