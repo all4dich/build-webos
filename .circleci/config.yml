@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  two:
+  build:
     docker:
      - image: circleci/ruby:2.4.1
      #- image: ubuntu:trusty
@@ -18,8 +18,3 @@ jobs:
       - store_artifacts:
           path: ~/project/BUILD/deploy/images
           destination: Firmware
-workflows:
-  version: 2
-  one_and_two:
-    jobs:
-      - two:
