@@ -13,8 +13,8 @@ jobs:
           command: |
             mkdir -p ~/project/mirror/downloads
             pushd ~/project/mirror/downloads
-            popd
             wget https://s3.ap-northeast-2.amazonaws.com/webosose-build/downloads/git2_github.com.raspberrypi.linux.git.tar.gz
+            popd
             sudo sh -c 'echo ko_KR.UTF-8 UTF-8 >> /etc/locale.gen'
             sudo sh -c 'echo en_US.UTF-8 UTF-8 >> /etc/locale.gen'
             sudo locale-gen
