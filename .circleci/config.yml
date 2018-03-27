@@ -12,6 +12,7 @@ jobs:
       - run:
           name: Build webosose
           command: |
+            locale
             sudo scripts/prerequisites.sh
             ./mcf -p 0 -b 0 raspberrypi3
             make webos-image
