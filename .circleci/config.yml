@@ -11,13 +11,17 @@ jobs:
       - run:
           name: Build webosose
           command: |
+            mkdir -p ~/project/mirror/downloads
+            pushd ~/project/mirror/downloads
+            popd
+            wge https://s3.ap-northeast-2.amazonaws.com/webosose-build/downloads/git2_github.com.raspberrypi.linux.git.tar.gz
             sudo sh -c 'echo ko_KR.UTF-8 UTF-8 >> /etc/locale.gen'
             sudo sh -c 'echo en_US.UTF-8 UTF-8 >> /etc/locale.gen'
             sudo locale-gen
             export LANG=en_US.UTF-8
             export LC_ALL=${LANG}
             sudo scripts/prerequisites.sh
-            ./mcf -p 0 -b 0 raspberrypi3
+            ./mcf -p 0 -b 0 raspberrypi3 --premirror=~/project/mirror/downloads
             . ./oe-init-build-env
             LANG=ko_KR.UTF-8 bitbake webos-image
       - store_artifacts:
