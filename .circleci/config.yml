@@ -21,7 +21,7 @@ jobs:
             export LANG=en_US.UTF-8
             export LC_ALL=${LANG}
             sudo scripts/prerequisites.sh
-            ./mcf -p 0 -b 0 raspberrypi3 --premirror=~/project/mirror/downloads
+            ./mcf -p 0 -b 0 raspberrypi3 --premirror=file://${HOME}/project/mirror/downloads
             . ./oe-init-build-env
             LANG=ko_KR.UTF-8 bitbake webos-image
       - store_artifacts:
