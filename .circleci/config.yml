@@ -1,0 +1,25 @@
+version: 2
+jobs:
+  two:
+    docker:
+     - image: circleci/ruby:2.4.1
+     #- image: ubuntu:trusty
+    steps:
+      - checkout
+      - run:
+          name: Welcome Message
+          command: 'echo "A Second hello from CircleCI"'
+      - run:
+          name: Build webosose
+          command: |
+            sudo scripts/prerequisites.sh
+            ./mcf -p 0 -b 0 raspberrypi3
+            make webos-image
+      - store_artifacts:
+          path: ~/project/BUILD/deploy/images
+          destination: Firmware
+workflows:
+  version: 2
+  one_and_two:
+    jobs:
+      - two:
